@@ -1,0 +1,47 @@
+-1 scenarios --- Current Resultant String will be given MORE priority & will be shown ABOVE the Next Resultant String in the list
+
+
+
+(a.length < b.length) && (a.toLowerCase().startsWith(searchTerm)) && (b.toLowerCase().startsWith(searchTerm))
+CRS is shorter in length than the NRS & both strings start with the Search Term
+
+(a.length < b.length) && (a.toLowerCase().startsWith(searchTerm)) && !(b.toLowerCase().startsWith(searchTerm)) 
+CRS is shorter in length than the NRS & CRS starts with the Search Term, but NRS does not start with Search Term
+
+(a.length < b.length) && !(a.toLowerCase().startsWith(searchTerm)) && !(b.toLowerCase().startsWith(searchTerm))
+CRS is shorter in length than the NRS & both strings DO NOT start with the Search Term 
+
+(a.length > b.length) && (a.toLowerCase().startsWith(searchTerm)) && !(b.toLowerCase().startsWith(searchTerm)) 
+CRS is longer in length than the NRS & CRS starts with the Search Term, but NRS does not start with Search Term
+
+(a.length == b.length) && (a.toLowerCase().startsWith(searchTerm)) && !(b.toLowerCase().startsWith(searchTerm))
+CRS & NRS are equal in length & CRS starts with the Search Term, but NRS does not start with Search Term
+
+
+
+1 scenarios --- Current Resultant String will be given LESSER priority & will be shown BELOW the Next Resultant String in the list
+
+
+
+(a.length < b.length) && !(a.toLowerCase().startsWith(searchTerm)) && (b.toLowerCase().startsWith(searchTerm))
+CRS is shorter in length than the NRS & CRS does not start with the Search Term, but NRS starts with Search Term
+
+(a.length > b.length) && (a.toLowerCase().startsWith(searchTerm)) && (b.toLowerCase().startsWith(searchTerm)) 
+CRS is longer in length than the NRS & both strings start with the Search Term
+
+(a.length > b.length) && !(a.toLowerCase().startsWith(searchTerm)) && (b.toLowerCase().startsWith(searchTerm)) 
+CRS is longer in length than the NRS & CRS does not start with the Search Term, but NRS starts with Search Term
+
+(a.length > b.length) && !(a.toLowerCase().startsWith(searchTerm)) && !(b.toLowerCase().startsWith(searchTerm)) 
+CRS is longer in length than the NRS & both strings DO NOT start with the Search Term
+
+(a.length == b.length) && !(a.toLowerCase().startsWith(searchTerm)) && (b.toLowerCase().startsWith(searchTerm))
+CRS & NRS are equal in length & CRS does not start with the Search Term, but NRS starts with Search Term
+
+0 scenarios --- Both Current Resultant String & Next Resultant String will be given same priority
+
+(a.length == b.length) && (a.toLowerCase().startsWith(searchTerm)) && (b.toLowerCase().startsWith(searchTerm))
+CRS & NRS are equal in length & both strings start with the Search Term
+
+(a.length == b.length) && !(a.toLowerCase().startsWith(searchTerm)) && !(b.toLowerCase().startsWith(searchTerm))
+CRS & NRS are equal in length & both strings DO NOT start with the Search Term

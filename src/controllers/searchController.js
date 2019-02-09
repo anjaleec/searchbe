@@ -21,9 +21,13 @@ module.exports.loadData = () => {
 
 //This function will be used for responding when route specified in routes/searchRoute.js is hit.
 module.exports.searchget = (req, res) => {
-    // console.log("req.headers is-----", req.headers);
-    let { searchterm } = req.headers;
-    let result = searchTrie.search(searchterm);
+    let { searchterm } = req.headers, result;
+
+    if (searchterm.length < 3) { //if search term length < 3, result should show the following message 
+        result = "Search Term must be >= 3 characters"
+    } else {  //if search term length >= 3, search result should be computed
+        result = searchTrie.search(searchterm);
+    }
 
     res.json({
         result

@@ -1,5 +1,9 @@
 # SEARCHBE
 
+# Testcase Around Result Ranking Criteria
+
+The testcases for the result ranking criteria is stored in the xlsx file "testcasesForInstantSearch.xlsx"
+
 # Steps for Deployment
 1. git clone the project
 2. cd to the project directory
