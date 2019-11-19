@@ -26,7 +26,17 @@ app.get('/', (req, res) =>
     res.send(`Node & express server are running on port ${PORT}`)
 );
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
     controller.loadData();
-    console.log(`Your server is running on ${PORT}`)
+    console.log(`Your server is running on ${PORT}`);
+    console.log(`sending ready--------------------------------------------`);
+    process.send('ready');
+});
+
+process.on('SIGINT', () => {
+    // process.send('SIGTERM');
+    server.close(() => {
+        console.log(`--------------------------------------------exiting process`);
+        // process.exit(0);
+    });
 });

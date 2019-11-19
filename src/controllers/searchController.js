@@ -3,7 +3,7 @@ let workableData;
 var searchTrie = new Trie(); //creation of a global Trie DS
 
 //This function will be used for loading data to the Data Structure/Pre-Computing the Data Structure
-module.exports.loadData = () => {
+module.exports.loadData = async () => {
 
     //Reading data.csv
     fs.readFile('data.csv', 'utf8', function (err, data) {
@@ -20,7 +20,7 @@ module.exports.loadData = () => {
 }
 
 //This function will be used for responding when route specified in routes/searchRoute.js is hit.
-module.exports.searchget = (req, res) => {
+module.exports.searchget = async (req, res) => {
     let { searchterm } = req.headers, result;
 
     if (searchterm.length < 3) { //if search term length < 3, result should show the following message 
@@ -28,10 +28,26 @@ module.exports.searchget = (req, res) => {
     } else {  //if search term length >= 3, search result should be computed
         result = searchTrie.search(searchterm);
     }
-
+    for (let i = 0; i < 10; i++) {
+        console.log("loading data.....", i);
+        await this.loadData();
+        await sleep(10000);
+        console.log("completed loading data.....", i);
+        // console.log("loading data.....");
+    }
+    // const timeoutObj = setTimeout(async () => {
+    // }, 1000);
+    // clearTimeout(timeoutObj);
+    console.log(result);
     res.json({
         result
     });
+}
+
+function sleep(ms){
+    return new Promise(resolve=>{
+        setTimeout(resolve,ms)
+    })
 }
 
 /*This function will be used for creation of a new Trie Node using the Map() JavaScript Object, 
